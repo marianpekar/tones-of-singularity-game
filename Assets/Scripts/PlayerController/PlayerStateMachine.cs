@@ -22,6 +22,23 @@ public class PlayerStateMachine : StateMachine
         Animator = GetComponent<Animator>();
         Controller = GetComponent<CharacterController>();
 
+        InputReader.OnLockCursorPerformed += ToggleCursorLock;
+
         SwitchState(new PlayerMoveState(this));
+    }
+
+    private bool cursorLock = true;
+    private void ToggleCursorLock()
+    {
+        cursorLock = !cursorLock;
+
+        if(cursorLock)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MoveComposite;
 
     public Action OnJumpPerformed;
+    public Action OnLockCursorPerformed;
 
     private Controls controls;
 
@@ -42,5 +43,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             return;
 
         OnJumpPerformed?.Invoke();
+    }
+
+    public void OnLockCursor(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        OnLockCursorPerformed?.Invoke();
     }
 }
