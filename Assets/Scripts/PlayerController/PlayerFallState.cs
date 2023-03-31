@@ -18,6 +18,7 @@ public class PlayerFallState : PlayerBaseState
     {
         ApplyGravity();
         CalculateMoveDirection();
+        FaceMoveDirection();
         Move();
 
         if (stateMachine.Controller.isGrounded)
